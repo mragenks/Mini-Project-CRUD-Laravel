@@ -14,7 +14,7 @@ class profileController extends Controller
      */
     public function index()
     {
-        $profiles = profile::latest()->paginate(); //menampilkan data dan view
+        $profiles = profile::latest()->get(); //menampilkan data dan view
     
         return view('profiles.index',compact('profiles'));
     }

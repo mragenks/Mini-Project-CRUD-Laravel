@@ -3,8 +3,8 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Profile</h2>
+            <div class="text-center">
+                <h2>List Profile</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('profiles.create') }}"> Create New Profile</a>

@@ -15,33 +15,36 @@
 <br>
 
 <div class="row">
-    <div class="col-md-6">
-        <table class="table table-bordered">
-            <tr>
-                <th>NIM:</th>
-                <td>{{ $profile->nim }}</td>
-            </tr>
-            <tr>
-                <th>Nama:</th>
-                <td>{{ $profile->nama }}</td>
-            </tr>
-            <tr>
-                <th>Email:</th>
-                <td>{{ $profile->email }}</td>
-            </tr>
-            <tr>
-                <th>Nomor HP:</th>
-                <td>{{ $profile->noHp }}</td>
-            </tr>
-            <tr>
-                <th>Jurusan:</th>
-                <td>{{ $profile->jurusan }}</td>
-            </tr>
-            <tr>
-                <th>Image:</th>
-                <td><img src="/images/{{ $profile->image }}" width="500px"></td>
-            </tr>
-        </table>
+    <div class="col-md-6 text-center">
+        <div class="card">
+            <img src="/images/{{ $profile->image }}" class="card-img-top " alt="Profile Image">
+            <div class="card-body">
+                <h4 class="card-title">{{ $profile->nama }}</h4>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="row">NIM:</th>
+                            <td>{{ $profile->nim }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Email:</th>
+                            <td>{{ $profile->email }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Nomor HP:</th>
+                            <td>{{ $profile->noHp }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Jurusan:</th>
+                            <td>{{ $profile->jurusan }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer text-center">
+                <p>Pengguna {{ $profile->id }}</p>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
