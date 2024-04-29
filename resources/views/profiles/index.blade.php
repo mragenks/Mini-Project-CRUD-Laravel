@@ -9,6 +9,7 @@
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('profiles.create') }}"> Create New Profile</a>
             </div>
+            <br>
         </div>
     </div>
     
@@ -20,7 +21,6 @@
      
     <table class="table table-bordered">
         <tr>
-            <th class="text-center">No</th>
             <th class="text-center">Image Profile</th>
             <th class="text-center">Nomor Induk Mahasiswa</th>
             <th class="text-center">Nama</th>
@@ -31,7 +31,6 @@
         </tr>
         @foreach ($profiles as $profile)
         <tr>
-            <td class="text-center">{{ ++$i }}</td>
             <td class="text-center"><img src="/images/{{ $profile->image }}" width="100px"></td>
             <td class="text-center">{{ $profile->nim }}</td>
             <td class="text-center">{{ $profile->nama }}</td>
@@ -54,7 +53,4 @@
         </tr>
         @endforeach
     </table>
-    
-    {!! $profiles->links() !!}
-        
 @endsection

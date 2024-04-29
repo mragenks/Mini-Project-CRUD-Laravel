@@ -14,10 +14,9 @@ class profileController extends Controller
      */
     public function index()
     {
-        $profiles = profile::latest()->paginate(5);
+        $profiles = profile::latest()->paginate(); //menampilkan data dan view
     
-        return view('profiles.index',compact('profiles'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('profiles.index',compact('profiles'));
     }
 
     /**
@@ -39,11 +38,14 @@ class profileController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nim' => 'Required',
-            'nama' => 'Required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10000',
+            'nim' => 'required',
+            'nama' => 'required',
+            'email' => 'required',
+            'noHp' => 'required',
+            'jurusan' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:10000',
         ]);
-        // dd($request);
+
         $input = $request->all();
   
         if ($image = $request->file('image')) {
@@ -52,12 +54,11 @@ class profileController extends Controller
             $image->move($destinationPath, $profileImage);
             $input['image'] = "$profileImage";
         }
-        // dd($input);
     
         profile::create($input);
      
         return redirect()->route('profiles.index')
-                        ->with('success','Profile created successfully.');
+                        ->with('success','Berhasil Menambahkan Profile.');
     }
 
     /**
@@ -92,13 +93,13 @@ class profileController extends Controller
     public function update(Request $request, profile $profile)
     {
         $request->validate([
-            // 'nim' => 'required',
-            // 'nama' => 'required',
-            // 'email' => 'required',
-            // 'noHP' => 'required',
-            // 'jurusan' => 'required',
+            'nim' => 'required',
+            'nama' => 'required',
+            'email' => 'required',
+            'noHp' => 'required',
+            'jurusan' => 'required',
         ]);
-  
+
         $input = $request->all();
   
         if ($image = $request->file('image')) {
@@ -113,7 +114,7 @@ class profileController extends Controller
         $profile->update($input);
     
         return redirect()->route('profiles.index')
-                        ->with('success','Profile updated successfully');
+                        ->with('success','Berhasil Memperbaharui Profile');
     }
 
     /**
@@ -127,6 +128,6 @@ class profileController extends Controller
         $profile->delete();
      
         return redirect()->route('profiles.index')
-                        ->with('success','Profile deleted successfully');
+                        ->with('success','Berhasil Menghapus Profile');
     }
 }
