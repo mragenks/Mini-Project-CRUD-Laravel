@@ -38,10 +38,10 @@ class profileController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nim' => 'required',
+            'nim' => 'required|integer',
             'nama' => 'required',
-            'email' => 'required',
-            'noHp' => 'required',
+            'email' => 'required|email',
+            'noHp' => 'required|alpha_num',
             'jurusan' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:10000',
         ]);
@@ -93,11 +93,11 @@ class profileController extends Controller
     public function update(Request $request, profile $profile)
     {
         $request->validate([
-            'nim' => 'required',
+            'nim' => 'required|integer',
             'nama' => 'required',
-            'email' => 'required',
-            'noHp' => 'required',
-            'jurusan' => 'required',
+            'email' => 'required|email',
+            'noHp' => 'required|alpha_num',
+            'jurusan' => 'required|alpha',
         ]);
 
         $input = $request->all();
